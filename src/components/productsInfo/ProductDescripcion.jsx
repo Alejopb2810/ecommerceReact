@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import getConfig from '../../Utils/getConfig'
 import { getUserCart } from '../../store/slices/cart.slice'
-
+import './styles/productDescription.css'
 
 const ProductDescripcion = ({ product }) => {
     const dispatch = useDispatch()
@@ -50,22 +50,24 @@ const ProductDescripcion = ({ product }) => {
     }
 
     return (
-        <article>
-            <h2>{product?.title}</h2>
-            <p>{product?.description}</p>
-            <section>
-                <span>Price</span>
-                <h3>{product?.price}</h3>
+        <article className='description-container'>
+            <h2 className='description__name'>{product?.title}</h2>
+            <p className='description__paragraph'>{product?.description}</p>
+            <section className='description__qualities'>
+                <span className='description__span'>Price: </span>
+                <h3 className='description__price'>${product?.price}</h3>
             </section>
-            <section>
-                <h3>Quantity</h3>
-                <div>
-                    <div onClick={handleMinus}>-</div>
-                    <div>{counter}</div>
-                    <div onClick={handlePlus}>+</div>
+            <section className='description__quantity'>
+                <h3 className='description__title'>Quantity</h3>
+                <div className='description__counter'>
+                    <div className='description__minus' onClick={handleMinus}>-</div>
+                    <div className='description__count'>{counter}</div>
+                    <div className='description__plus' onClick={handlePlus}>+</div>
                 </div>
             </section>
-            <button onClick={handleCart}>Add to Cart <i className="fa-solid fa-cart-shopping"></i></button>
+            <div>
+                <button className='description__cart' onClick={handleCart}>Add to Cart <i className="fa-solid fa-cart-shopping"></i></button>
+            </div>
         </article>
     )
 }
